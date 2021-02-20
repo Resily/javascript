@@ -87,7 +87,13 @@ export default function DrawHighlightAnnotationTask(getGraphics, createTransform
 
                 calloutTemplate = readTemplatesTask.getTemplate(calloutTemplateName, readTemplatesTask.DefaultWidgetTemplateName);
 
-                position = getAnnotationPosition(projectionPoint, viewPortRect, calloutTemplate.templateConfig.itemSize);
+                const itemSize =calloutTemplate.templateConfig.itemSize
+                if (calloutTemplate.templateConfig.getDynamicItemSize) {
+                  const dynamicItemSize = calloutTemplate.templateConfig.getDynamicItemSize(treeItemId)
+                  itemSize.width = dynamicItemSize.width
+                  itemSize.height = dynamicItemSize.height
+                }
+                position = getAnnotationPosition(projectionPoint, viewPortRect, itemSize);
 
                 /* position callout div placeholder */
                 calloutPanelPosition = new Rect(position);
