@@ -28293,8 +28293,8 @@ function DrawHighlightAnnotationTask(getGraphics, createTransformTask, applyLayo
 
               if (calloutTemplate.templateConfig.getDynamicItemSize) {
                 var dynamicItemSize = calloutTemplate.templateConfig.getDynamicItemSize(treeItemId);
-                itemSize.width = dynamicItemSize.width;
-                itemSize.height = dynamicItemSize.height;
+                itemSize.width += dynamicItemSize.width;
+                itemSize.height += dynamicItemSize.height;
               }
 
               position = getAnnotationPosition(projectionPoint, viewPortRect, itemSize);

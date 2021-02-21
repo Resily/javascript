@@ -90,8 +90,8 @@ export default function DrawHighlightAnnotationTask(getGraphics, createTransform
                 const itemSize =calloutTemplate.templateConfig.itemSize
                 if (calloutTemplate.templateConfig.getDynamicItemSize) {
                   const dynamicItemSize = calloutTemplate.templateConfig.getDynamicItemSize(treeItemId)
-                  itemSize.width = dynamicItemSize.width
-                  itemSize.height = dynamicItemSize.height
+                  itemSize.width += dynamicItemSize.width
+                  itemSize.height += dynamicItemSize.height
                 }
                 position = getAnnotationPosition(projectionPoint, viewPortRect, itemSize);
 
