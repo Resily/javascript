@@ -640,7 +640,7 @@ export default function OrgItemsPositionsTask(currentControlSizeTask, scaleOptio
         if (templateConfig.getDynamicItemSize) {
           const dynamicItemSize = templateConfig.getDynamicItemSize(treeItemId)
           size.width += dynamicItemSize.width
-          size.height = dynamicItemSize.height
+          size.height += dynamicItemSize.height
         }
         if (isCursor) {
           size.height += templateConfig.cursorPadding.top + templateConfig.cursorPadding.bottom;

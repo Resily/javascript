@@ -87,7 +87,7 @@ export default function DrawHighlightAnnotationTask(getGraphics, createTransform
 
                 calloutTemplate = readTemplatesTask.getTemplate(calloutTemplateName, readTemplatesTask.DefaultWidgetTemplateName);
 
-                const itemSize =calloutTemplate.templateConfig.itemSize
+                const itemSize = new Size(calloutTemplate.templateConfig.itemSize)
                 if (calloutTemplate.templateConfig.getDynamicItemSize) {
                   const dynamicItemSize = calloutTemplate.templateConfig.getDynamicItemSize(treeItemId)
                   itemSize.width += dynamicItemSize.width
