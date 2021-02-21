@@ -39,9 +39,7 @@
     "start": "webpack serve ",
     "apireference": "node apireference.js apireference.json"
   },
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "jest": {
     "testEnvironment": "jsdom"
   },
