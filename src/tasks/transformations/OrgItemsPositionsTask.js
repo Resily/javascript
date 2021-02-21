@@ -222,7 +222,7 @@ export default function OrgItemsPositionsTask(currentControlSizeTask, scaleOptio
           treeItemtemplate = itemTemplateParamsTask.getTemplateParams(treeItemId);
 
         var actualVisibility = (treeItemVisibility === Visibility.Auto) ? treeLevelPosition.currentvisibility : treeItemVisibility;
-        var size = getSize(actualVisibility, cursorItemId == treeItemId, treeItemtemplate, _itemsSizesOptions, _orientationOptions.orientationType);
+        var size = getSize(actualVisibility, cursorItemId == treeItemId, treeItemtemplate, _itemsSizesOptions, _orientationOptions.orientationType, treeItemId);
 
         treeItemPosition.actualVisibility = actualVisibility;
         treeItemPosition.actualSize = size.actualSize;
@@ -627,7 +627,7 @@ export default function OrgItemsPositionsTask(currentControlSizeTask, scaleOptio
     });
   }
 
-  function getSize(visibility, isCursor, treeItemTemplate, itemsSizesOptions, orientationType) {
+  function getSize(visibility, isCursor, treeItemTemplate, itemsSizesOptions, orientationType, treeItemId) {
     var templateConfig,
       size,
       contentPosition;
@@ -637,6 +637,11 @@ export default function OrgItemsPositionsTask(currentControlSizeTask, scaleOptio
         templateConfig = treeItemTemplate.template.templateConfig;
         size = new Size(templateConfig.itemSize);
         contentPosition = new Rect(0, 0, size.width, size.height);
+        if (templateConfig.getDynamicItemSize) {
+          const dynamicItemSize = templateConfig.getDynamicItemSize(treeItemId)
+          size.width += dynamicItemSize.width
+          size.height = dynamicItemSize.height
+        }
         if (isCursor) {
           size.height += templateConfig.cursorPadding.top + templateConfig.cursorPadding.bottom;
           size.width += templateConfig.cursorPadding.left + templateConfig.cursorPadding.right;

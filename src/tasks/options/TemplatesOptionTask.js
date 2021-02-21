@@ -63,7 +63,8 @@ export default function TemplatesOptionTask(optionsTask, defaultConfig, defaultT
         cursorBorderWidth: new ValueReader(["number"], false, defaultTemplateConfig.cursorBorderWidth),
         cursorTemplate: new ValueReader(["string", "object"], true),
         hasButtons: new EnumerationReader(Enabled, false, defaultTemplateConfig.hasButtons),
-        onButtonsRender: new FunctionReader()
+        onButtonsRender: new FunctionReader(),
+        getDynamicItemSize: new FunctionReader()
       }),
       true,
       "name"
